@@ -8,8 +8,8 @@ using UnityEditor;
 public class IsoEditor : Editor
 {
     private TileManager tileManager;
-   
 
+    private Vector3 mousepos;
 
     private float tileWidth;
     private float tileHeight;
@@ -17,7 +17,7 @@ public class IsoEditor : Editor
     private void OnEnable()
     {
         tileManager = (TileManager)target;
-          }
+    }
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -26,16 +26,34 @@ public class IsoEditor : Editor
     void OnSceneGUI()
     {
         SceneView.RepaintAll();
+        UpdateMousePosition();
+        Event e = Event.current;
+
         tileWidth = tileManager.gridSize * gridConst * .5f;
         tileHeight = tileManager.gridSize * gridConst * .25f;
         
         DrawMapGrid();
     }
+    private void UpdateMousePosition()
+    {
+        Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+        mousepos = ray.origin;
+    }
+    private bool MouseOnGrid()
+    {
+        if (tileManager.mapHeight == tileManager.mapWidth)
+        {
+            return true
+        }
+        else
+            return false;
+    }
+    
     private void DrawMapGrid()
     {
         //그리드 선 색 설정
         Handles.color = tileManager.gridColor;
-
+        
         //왼쪽 아래 방향 그리드 Draw
         Vector2 startPos = tileManager.transform.position;
         Vector2 endPos = tileManager.transform.position;
