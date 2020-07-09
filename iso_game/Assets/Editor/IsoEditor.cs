@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+
 [CustomEditor(typeof(TileManager))]
 
 
@@ -28,7 +29,10 @@ public class IsoEditor : Editor
         SceneView.RepaintAll();
         UpdateMousePosition();
         Event e = Event.current;
-
+        if (e.type == EventType.MouseDown || e.type == EventType.MouseDrag)
+        {
+            Debug.Log(MouseOnTile());
+        }
         tileWidth = tileManager.gridSize * gridConst * .5f;
         tileHeight = tileManager.gridSize * gridConst * .25f;
         
@@ -39,16 +43,23 @@ public class IsoEditor : Editor
         Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
         mousepos = ray.origin;
     }
-    private bool MouseOnGrid()
+    private Vector2 MouseOnTile()
     {
-        if (tileManager.mapHeight == tileManager.mapWidth)
-        {
-            return true
-        }
-        else
-            return false;
+        float mouseHitGridX = Mathf.FloorToInt((mousepos.y - tileHeight))
+        float mouseHitGridY = Mathf.FloorToInt(-((mousepos.y - tileHeight) / tileHeight * 0.5f)
+            - (mousepos.x / tileWidth * 0.5f));
+        return new Vector2(mouseHitGridX,mouseHitGridY);
     }
-    
+    private Vector2 CalcTilePosition(int x, int y)
+    {
+        float xpos = tileManager.transform.position.x;
+        float ypos = tileManager.transform.position.y;
+        xpos -= x * tileWidth;
+        xpos += y * tileWidth;
+        ypos -= (x + y) * tileHeight;
+        return new Vector2(xpos, ypos);
+    }
+   
     private void DrawMapGrid()
     {
         //그리드 선 색 설정

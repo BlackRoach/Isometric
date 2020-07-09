@@ -8,7 +8,6 @@ public class TileManager : MonoBehaviour
 {
     
     public int gridSize;
-    public Vector2 mousepos;
     public Color gridColor;
 
     public float mapWidth;
