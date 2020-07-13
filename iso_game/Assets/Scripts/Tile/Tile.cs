@@ -18,8 +18,12 @@ public class Tile : MonoBehaviour
         }
     }
 
+    protected int order;
     protected float gridX;
     protected float gridY;
-
+    protected void CalcOrderInLayer()
+    {
+        order = (int)(gridX + gridY);
+    }
     
 }

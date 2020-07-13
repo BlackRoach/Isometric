@@ -13,9 +13,10 @@ public class TileManager : MonoBehaviour
     public float mapWidth;
     public float mapHeight;
 
+#if UNITY_EDITOR
     public float makegridX;
     public float makegridY;
-
+#endif
 
 
 
