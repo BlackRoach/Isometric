@@ -13,9 +13,11 @@ public class TileManager : MonoBehaviour
     public float mapWidth;
     public float mapHeight;
 
+    public float makegridX;
+    public float makegridY;
 
-    
 
-    
-    
+
+
+
 }
