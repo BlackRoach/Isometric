@@ -86,6 +86,10 @@ public class IsoEditor : Editor
 
         DrawGrid(gridInitPos, tileManager.mapWidth, tileManager.mapHeight, tileManager.gridColor);
     }
+    /// <summary>
+    /// 편집 모드 중 Make 모드의 기능을 모아놓은 함수
+    /// </summary>
+    /// <param name="e">current 를 받기 위한 매개변수</param>
     private void MakeMode(Event e)
     {
         if (isCreate)
@@ -134,6 +138,9 @@ public class IsoEditor : Editor
 
         }
     }
+    /// <summary>
+    /// 마우스 이벤트 관련 코드 작성 함수
+    /// </summary>
     private void MouseEvent()
     {
         Event e = Event.current;
