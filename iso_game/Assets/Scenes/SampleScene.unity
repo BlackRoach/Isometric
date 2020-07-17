@@ -1846,10 +1846,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93a60bc3244049c5bf96961cea80394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 120
-  gridColor: {r: 1, g: 1, b: 1, a: 0.16078432}
-  mapWidth: 17
-  mapHeight: 17
+  e_data:
+    gridInitpos: {x: 0, y: 0.29999998}
+    gridSize: 120
+    mapWidth: 17
+    mapHeight: 17
+    tileWidth: 0.59999996
+    tileHeight: 0.29999998
+  gridColor: {r: 1, g: 1, b: 1, a: 0.37254903}
   makegridX: 3
   makegridY: 3
 --- !u!4 &1333754925
