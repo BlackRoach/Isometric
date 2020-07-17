@@ -177,7 +177,7 @@ public class IsoEditor : Editor
         // 마우스 위치 업데이트
         Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
         mousepos = ray.origin;
-        t_data = tileManager.e_data;
+        t_data = tileManager.t_data;
         //각 타일 width, height값 업데이트
         t_data.CalcTileSize();
         //grid 시작지점 업데이트

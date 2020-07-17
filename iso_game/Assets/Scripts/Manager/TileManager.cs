@@ -10,7 +10,8 @@ public class TileManager : MonoBehaviour
 
 
 #if UNITY_EDITOR
-    public TileMapData e_data;
+   
+
     public Color gridColor;
 
    
@@ -22,12 +23,12 @@ public class TileManager : MonoBehaviour
     {
         get { return instance; }
     }
-
+    public TileMapData t_data;
     private GameObject[,] tileAvailable;
     private GameObject selectedObj;
 
-    private TileMapData t_data;
-    
+   
+
     private float tileWidth;
     private float tileHeight;
    
@@ -101,8 +102,12 @@ public class TileManager : MonoBehaviour
         return true;
     }
 }
+/// <summary>
+/// 타일맵의 초기위치, 그리드 크기, 맵 크기 등을 담은 클래 
+/// </summary>
 [System.Serializable]
-public class TileMapData
+[CreateAssetMenu(fileName = "TileMap Data", menuName = "Scriptable Object/TileMap Data", order = int.MaxValue)]
+public class TileMapData : ScriptableObject
 {
     public Vector2 gridInitpos;
     public float gridSize;
