@@ -15,12 +15,4 @@ public class TileController : MonoBehaviour
     
 }
 
-[System.Serializable]
-public class TileData
-{
-    public string tileNum;
-    public int order;
-    public int gridX;
-    public int gridY;
 
-}

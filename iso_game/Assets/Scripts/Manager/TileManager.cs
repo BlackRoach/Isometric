@@ -18,36 +18,16 @@ public class TileManager : MonoBehaviour
     public float makegridX;
     public float makegridY;
 #endif
-    private static TileManager instance;
-    public static TileManager Instance
-    {
-        get { return instance; }
-    }
+    
     public TileMapData t_data;
     private GameObject[,] tileAvailable;
     private GameObject selectedObj;
 
-   
 
-    private float tileWidth;
-    private float tileHeight;
-   
 
     private void Awake()
-    { 
-        if (instance != null)
-        {
-            DestroyImmediate(this.GetComponent<TileManager>());
-            return;
-        }
-        instance = this;
-
-        // 나중에 json으로 받음
-        t_data.mapWidth = 17;
-        t_data.mapHeight = 17;
-
-        t_data.gridSize = 120;
-
+    {
+        t_data = Resources.Load("Data/TileMap Data") as TileMapData;
         t_data.CalcTileSize();
         tileAvailable = new GameObject[(int)t_data.mapWidth,(int)t_data.mapHeight];
         
@@ -102,30 +82,4 @@ public class TileManager : MonoBehaviour
         return true;
     }
 }
-/// <summary>
-/// 타일맵의 초기위치, 그리드 크기, 맵 크기 등을 담은 클래 
-/// </summary>
-[System.Serializable]
-[CreateAssetMenu(fileName = "TileMap Data", menuName = "Scriptable Object/TileMap Data", order = int.MaxValue)]
-public class TileMapData : ScriptableObject
-{
-    public Vector2 gridInitpos;
-    public float gridSize;
-    public float mapWidth;
-    public float mapHeight;
-    public float tileWidth;
-    public float tileHeight;
-    private const float gridConst = 0.01f;
-    public float GridConst { get { return gridConst; } }
 
-    public void CalcTileSize()
-    {
-        tileWidth = gridSize * gridConst * .5f;
-        tileHeight = gridSize * gridConst * .25f;
-    }
-    public void SetInitPos(Vector3 position)
-    {
-        gridInitpos = position;
-        gridInitpos.y = position.y + tileHeight;
-    }
-}

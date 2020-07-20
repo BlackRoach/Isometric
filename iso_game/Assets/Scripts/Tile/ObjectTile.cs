@@ -9,6 +9,6 @@ public class ObjectTile : Tile
     {
         base.CalcOrderInLayer();
 
-        order++;
+        data.order++;
     }
 }

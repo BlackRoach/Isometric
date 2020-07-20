@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    
-    protected int order;
-    protected float gridX;
-    protected float gridY;
+
+    protected TileData data;
     protected virtual void CalcOrderInLayer()
     {
-        order = (int)(gridX + gridY);
+        data.order = (int)(data.gridX + data.gridY);
     }
+
     
 }
+[System.Serializable]
+public class TileData
+{
+    public string tileNum;
+    public int order;
+    public float gridX;
+    public float gridY;
 
+}
