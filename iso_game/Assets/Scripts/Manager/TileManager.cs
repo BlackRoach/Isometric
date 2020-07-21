@@ -23,18 +23,49 @@ public class TileManager : MonoBehaviour
     private GameObject[,] tileAvailable;
     private GameObject selectedObj;
 
+    private Vector2 touchPos;
+    private bool isEdit;
 
+    private int x = 0;
+    private int y = 0;
 
     private void Awake()
     {
         t_data = Resources.Load("Data/TileMap Data") as TileMapData;
         t_data.CalcTileSize();
         tileAvailable = new GameObject[(int)t_data.mapWidth,(int)t_data.mapHeight];
-        
+
+        isEdit = false;
     }
     private void Update()
     {
-        
+        if(Input.touchCount>0)
+        {
+            touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            if(isEdit&&GetMouseOnTile(ref x,ref y,touchPos,ref t_data))
+            {
+                if(tileAvailable[x-1,y-1] != null && selectedObj == null)
+                {
+                    selectedObj = tileAvailable[x - 1, y - 1];
+                   
+                }
+                else
+                {
+                    selectedObj.transform.position =
+                       CalcTilePosition(x, y, t_data.gridInitpos, ref t_data);
+   
+                }
+            }
+
+        }
+        else
+        {
+            if(selectedObj != null)
+            {
+                selectedObj.GetComponent<ObjectTile>().ChangePosition(x, y);
+
+            }
+        }
     }
     /// <summary>
     /// 그리드 타일의 위치를 통해 World Position을 반환하는 함수

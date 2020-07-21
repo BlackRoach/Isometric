@@ -8,7 +8,7 @@ public class ObjectTile : Tile
     protected override void CalcOrderInLayer()
     {
         base.CalcOrderInLayer();
-
+        
         data.order++;
     }
 }

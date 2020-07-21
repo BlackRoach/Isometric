@@ -10,8 +10,8 @@ public enum TileType
 }
 public class TileController : MonoBehaviour
 {
-    public TileData tiledata;
-
+    
+    
     
 }
 

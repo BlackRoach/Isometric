@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a547736afc654b9d9753164b367be1c, type: 3}
   m_Name: TileMap Data
   m_EditorClassIdentifier: 
-  gridInitpos: {x: 0, y: 0}
-  gridSize: 0
-  mapWidth: 0
-  mapHeight: 0
-  tileWidth: 0
-  tileHeight: 0
+  gridInitpos: {x: 0, y: 0.29999998}
+  gridSize: 120
+  mapWidth: 17
+  mapHeight: 17
+  tileWidth: 0.59999996
+  tileHeight: 0.29999998

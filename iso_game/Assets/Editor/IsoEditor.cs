@@ -30,7 +30,6 @@ public class IsoEditor : Editor
     private int selectX;
     private int selectY;
 
-    private const float gridConst = 0.01f;
     private void OnEnable()
     {
         tileManager = (TileManager)target;

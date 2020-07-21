@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-
+    public int a;
     protected TileData data;
     protected virtual void CalcOrderInLayer()
     {
         data.order = (int)(data.gridX + data.gridY);
     }
-
+    public void ChangePosition(int x, int y)
+    {
+        data.gridX = x;
+        data.gridY = y;
+        CalcOrderInLayer();
+    }
     
 }
 [System.Serializable]
