@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    protected bool available;
-    
-    public bool Available
+    public int a;
+    protected TileData data;
+    protected virtual void CalcOrderInLayer()
     {
-        get
-        {
-            return available;
-        }
-        set
-        {
-            available = Available;
-        }
+        data.order = (int)(data.gridX + data.gridY);
     }
-
-    protected float gridX;
-    protected float gridY;
-
+    public void ChangePosition(int x, int y)
+    {
+        data.gridX = x;
+        data.gridY = y;
+        CalcOrderInLayer();
+    }
     
+}
+[System.Serializable]
+public class TileData
+{
+    public string tileNum;
+    public int order;
+    public float gridX;
+    public float gridY;
+
 }
